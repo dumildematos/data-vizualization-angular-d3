@@ -2,6 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
+Next, install D3 and the D3 type definitions from npm. Type definitions will allow TypeScript to apply type hints to the external D3 code:
+
+`npm install d3 && npm install @types/d3 --save-dev`
+
+Use the Angular CLI ng add command for updating your Angular project.
+
+`ng add ngx-bootstrap`
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
