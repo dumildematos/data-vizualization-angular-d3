@@ -20,9 +20,12 @@ import { NbaService } from './services/nba/nba.service';
           <app-pie></app-pie>
         </div> -->
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <app-scatter></app-scatter>
+      <div class="row mt-2">
+        <div class="col-md-6 card d-flex justify-content-center">
+          <donut-chart
+            *ngIf="seassonPlayers.length > 0"
+            [data]="seassonPlayers">
+          </donut-chart>
         </div>
       </div>
     </main>

@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HorizontalBarChartComponent } from './components/horizontal-bar-chart/horizontal-bar-chart.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
+import { DonutChartComponent } from './components/donut-chart/donut-chart.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HeaderComponent } from './components/header/header.component';
     PieComponent,
     ScatterComponent,
     HorizontalBarChartComponent,
-    HeaderComponent
+    HeaderComponent,
+    DonutChartComponent
   ],
   imports: [
     BrowserModule,

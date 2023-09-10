@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import * as d3 from 'd3';
-import { NbaService } from 'src/app/services/nba/nba.service';
 
 @Component({
   selector: 'horizontal-bar-chart',
@@ -37,9 +36,9 @@ export class HorizontalBarChartComponent implements OnInit, OnChanges{
   selectedYear: number;
   years: number[] = [];
 
-  constructor(private nbaService: NbaService) {
+  constructor() {
     this.selectedYear = this.year;
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 10; i++) {
       this.years.push(this.selectedYear - i);
     }
   }
@@ -49,7 +48,6 @@ export class HorizontalBarChartComponent implements OnInit, OnChanges{
 
 
    ngOnInit(): void {
-    console.log(this.data)
     this.createSvg();
     this.drawBars(this.data);
 
