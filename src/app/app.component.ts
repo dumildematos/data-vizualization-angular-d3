@@ -14,18 +14,23 @@ import { NbaService } from './services/nba/nba.service';
             [year]="currentYear"
             (change)="changeYear($event)">
           </horizontal-bar-chart>
-          <!-- <app-bar></app-bar> -->
         </div>
         <!-- <div class="col-md-4 card">
           <app-pie></app-pie>
         </div> -->
       </div>
       <div class="row mt-2">
-        <div class="col-md-6 card d-flex justify-content-center">
+        <div class="col-md-5 card">
           <donut-chart
             *ngIf="seassonPlayers.length > 0"
             [data]="seassonPlayers">
           </donut-chart>
+        </div>
+        <div class="col-md-7 card">
+          <app-bar
+            *ngIf="seassonPlayers.length > 0"
+            [data]="seassonPlayers">
+          </app-bar>
         </div>
       </div>
     </main>
@@ -33,7 +38,7 @@ import { NbaService } from './services/nba/nba.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'data-vizualization-angular-d3';
+  title = 'NBA Season | Dashboard';
   seassonPlayers: any[] = [];
   currentYear = new Date().getFullYear();
   topTenOfSeasonPlayers: any[] = [];

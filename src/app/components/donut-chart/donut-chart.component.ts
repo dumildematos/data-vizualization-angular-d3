@@ -5,15 +5,15 @@ import * as d3 from 'd3';
   template: `
     <div class="row p-2 m2">
       <div class="col-md-10">
-        <h4> Player Detail </h4>
+        <h4> Individual summary </h4>
       </div>
       <div class="col-md-2 d-flex justify-content-end">
         <select [(ngModel)]="selectedPlayerId" (change)="onPlayerSelect()">
-          <option *ngFor="let player of data" [value]="player.id">{{ player.player_name }}</option>
+          <option *ngFor="let player of data" [value]="player.id">{{ player.player_name }} <small>( {{ player.team }} )</small></option>
         </select>
       </div>
     </div>
-    <figure id="cDonut" class="d-flex justify-content-center"></figure>
+    <figure id="cDonut" class="d-flex justify-content-center mt-2"></figure>
 
   `,
   styleUrls: ['./donut-chart.component.scss']
@@ -99,14 +99,14 @@ export class DonutChartComponent implements OnInit{
   const dPlayer = this.data.filter(p => p.id === player.id)[0];
 
   this.playerDetails.data = [
-      { name: 'effect_fg_percent', value: Number(dPlayer.effect_fg_percent) },
-      { name: 'field_attempts', value: dPlayer.field_attempts },
-      { name: 'field_goals', value: dPlayer.field_goals },
-      { name: 'field_percent', value: dPlayer.field_percent },
-      { name: 'games', value: dPlayer.games },
-      { name: 'games_started', value: dPlayer.games_started },
-      { name: 'minutes_played', value: dPlayer.minutes_played },
-      { name: 'season', value: dPlayer.season }
+      { name: 'PF', value: dPlayer.PF },
+      { name: 'FTA', value: dPlayer.fta },
+      { name: 'Points', value: dPlayer.PTS },
+      { name: 'FP', value: dPlayer.field_percent },
+      { name: 'Games', value: dPlayer.games },
+      { name: 'GS', value: dPlayer.games_started },
+      { name: 'Minutes Played', value: dPlayer.minutes_played },
+      { name: 'Season', value: dPlayer.season }
     ];
   }
 

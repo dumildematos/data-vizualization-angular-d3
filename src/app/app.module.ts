@@ -13,6 +13,7 @@ import { HorizontalBarChartComponent } from './components/horizontal-bar-chart/h
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { DonutChartComponent } from './components/donut-chart/donut-chart.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DonutChartComponent } from './components/donut-chart/donut-chart.compon
     ScatterComponent,
     HorizontalBarChartComponent,
     HeaderComponent,
-    DonutChartComponent
+    DonutChartComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

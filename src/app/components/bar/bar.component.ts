@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 
 
 @Component({
   selector: 'app-bar',
   template: `
-    <h3>Bar Chart</h3>
+    <div class="row p-2 m2">
+      <div class="col-md-10">
+        <h3> Team points for the season</h3>
+      </div>
+    </div>
     <figure id="bar"></figure>
   `
 })
 export class BarComponent implements OnInit {
 
-  private data = [
+  @Input() data: Array<any>  = [
     {"Framework": "Vue", "Stars": "166443", "Released": "2014"},
     {"Framework": "React", "Stars": "150793", "Released": "2013"},
     {"Framework": "Angular", "Stars": "62342", "Released": "2016"},
@@ -31,7 +35,7 @@ export class BarComponent implements OnInit {
   private createSvg(): void {
     this.svg = d3.select("figure#bar")
     .append("svg")
-    .attr("width", this.width + (this.margin * 2))
+    .attr("width", "auto")
     .attr("height", this.height + (this.margin * 2))
     .append("g")
     .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
@@ -41,7 +45,7 @@ export class BarComponent implements OnInit {
     // Create the X-axis band scale
     const x = d3.scaleBand()
     .range([0, this.width])
-    .domain(data.map(d => d.Framework))
+    .domain(data.map(d => d.team))
     .padding(0.2);
 
     // Draw the X-axis on the DOM
@@ -54,7 +58,7 @@ export class BarComponent implements OnInit {
 
     // Create the Y-axis band scale
     const y = d3.scaleLinear()
-    .domain([0, 200000])
+    .domain([0, d3.max(data, (d:any) => d.PTS)])
     .range([this.height, 0]);
 
     // Draw the Y-axis on the DOM
@@ -66,10 +70,10 @@ export class BarComponent implements OnInit {
     .data(data)
     .enter()
     .append("rect")
-    .attr("x", (d: any) => x(d.Framework))
-    .attr("y", (d: any) => y(d.Stars))
+    .attr("x", (d: any) => x(d.team))
+    .attr("y", (d: any) => y(d.PTS))
     .attr("width", x.bandwidth())
-    .attr("height", (d: any) => this.height - y(d.Stars))
+    .attr("height", (d: any) => this.height - y(d.PTS))
     .attr("fill", "#d04a35");
   }
 
