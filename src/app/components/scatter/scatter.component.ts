@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 @Component({
   selector: 'app-scatter',
   template: `
-    <h2>Scatter Plot</h2>
+    <h3>Scatter Plot</h3>
     <figure id="scatter"></figure>
   `,
 })

@@ -5,7 +5,7 @@ import * as d3 from 'd3';
 @Component({
   selector: 'app-pie',
   template: `
-    <h2>Pie Chart</h2>
+    <h3>Pie Chart</h3>
     <figure id="pie"></figure>
   `
 })
