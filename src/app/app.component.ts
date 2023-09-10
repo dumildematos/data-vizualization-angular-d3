@@ -4,8 +4,9 @@ import { NbaService } from './services/nba/nba.service';
 @Component({
   selector: 'app-root',
   template: `
-    <app-header></app-header>
-    <main class="container p-4">
+    <app-loader *ngIf="isLoading"></app-loader>
+    <app-header *ngIf="!isLoading"></app-header>
+    <main class="container p-4" *ngIf="!isLoading">
       <div class="row">
         <div class="col-md-12 card">
           <horizontal-bar-chart
@@ -39,6 +40,7 @@ import { NbaService } from './services/nba/nba.service';
 })
 export class AppComponent implements OnInit {
   title = 'NBA Season | Dashboard';
+  isLoading: boolean = false;
   seassonPlayers: any[] = [];
   currentYear = new Date().getFullYear();
   topTenOfSeasonPlayers: any[] = [];
@@ -52,8 +54,9 @@ export class AppComponent implements OnInit {
   }
 
   allPlayersSeason(year: number) {
-
+    this.isLoading = true;
     this.nbaService.allPlayersBySeason(year).subscribe(response => {
+      this.isLoading = false;
       this.seassonPlayers = response.results;
       if(this.seassonPlayers.length > 0) {
         this.topTenOfSeasonPlayers = this.seassonPlayers.slice(0,10)
